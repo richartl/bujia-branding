@@ -15,4 +15,4 @@ Parte de la versión aprobada o identificada para revisión. Conserva la maestra
 
 Cada carpeta de exportación corresponde a un destino: `screen-printing`, `digital-printing`, `embroidery`, `social-media` o `web`. Un PNG sigue siendo raster aunque tenga fondo transparente. Verifica el contenido de un archivo antes de llamarlo vectorial. Cuando falten especificaciones del proveedor, registra los datos pendientes y presenta el archivo como prueba. Declara preparación para producción únicamente tras comprobar las especificaciones correspondientes.
 
-Antes de preparar el troquel de un sticker, comprueba la [integración del logo y de Instagram en una sola silueta](IMAGE_EDITING.md#logo-instagram-y-silueta-de-stickers).
+Para stickers aplica el [formato de corte](IMAGE_EDITING.md#formato-de-corte) y verifica que el logo e Instagram queden dentro del perímetro. El canal alfa del PNG muestra el exterior transparente de una silueta. Si la imprenta requiere una línea vectorial de corte, prepárala con el formato, el margen y el sangrado que indique.

@@ -26,4 +26,11 @@ Muestra cada imagen directamente en la respuesta para revisión y enlaza su arch
 
 En cada sticker, usa el [logo ovalado maestro](../masters/logo/bujia-oval-logo-v1.0.0-red-cream.md) en un lugar discreto que pertenezca a la escena, como un letrero, una etiqueta sobre un objeto o un parche. Si se coloca cerca del borde, únelo visual y físicamente al cuerpo de la ilustración. Incluye siempre `@bujiaprojectgarage`, escrito exactamente así, legible al tamaño previsto y dentro de la misma silueta.
 
-Comprueba que el contorno exterior previsto para el corte encierra ambos elementos en una pieza. Evita logos, textos e islas decorativas que exijan cortes separados. Si falta el tamaño final o un troquel confirmado, presenta el resultado como propuesta pendiente de validación para impresión.
+### Formato de corte
+
+Si el propietario pide formato cuadrado o de silueta, usa ese formato. Si puedes identificar el formato por la composición, aplica la opción correspondiente. Cuando haya duda, entrega dos versiones independientes, una cuadrada y otra de silueta, y muestra ambas.
+
+- **Silueta.** Sigue el contorno exterior de la ilustración y entrega un PNG con transparencia real fuera de ese contorno. Comprueba que el logo y el usuario de Instagram quedan dentro de una sola pieza, sin islas que exijan cortes separados. Respeta las aperturas interiores que deban llevar el material del sticker.
+- **Cuadrado.** Conserva el fondo como parte de la pieza y usa el perímetro exterior para el corte. Si el propietario pide un cuadrado explícitamente, entrega un lienzo 1:1 y ajusta el encuadre sin deformar la ilustración.
+
+Si falta el tamaño final o un troquel confirmado, presenta el resultado como propuesta pendiente de validación para impresión.

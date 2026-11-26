@@ -13,6 +13,6 @@ Para usar estas instrucciones sin activación automática o resolver el acceso a
 
 Aplica la [regla de entrega de propuestas](../../../docs/IMAGE_EDITING.md#entrega-de-propuestas) y muestra cada imagen al propietario para revisión.
 
-Para todo sticker aplica la regla de [logo, Instagram y silueta](../../../docs/IMAGE_EDITING.md#logo-instagram-y-silueta-de-stickers).
+Para todo sticker aplica la regla de [logo e Instagram](../../../docs/IMAGE_EDITING.md#logo-instagram-y-silueta-de-stickers) y elige el [formato de corte](../../../docs/IMAGE_EDITING.md#formato-de-corte) siguiendo el pedido del propietario.
 
 Para cualquier diseño de fachada, consulta la [regla de fachada actual](../../../BRAND_GUIDELINES.md#fachada-actual).
