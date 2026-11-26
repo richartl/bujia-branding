@@ -4,6 +4,10 @@
 
 | Identificador | Nombre | Categoría | Procedencia | Versión | Vista previa | Archivo | Estado | Maestra relacionada | Descripción |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `bujia-oval-logo` | [Logo ovalado principal de Bujía](masters/logo/bujia-oval-logo-v1.0.0-red-cream.md) | `logo` | `human` | `1.0.0` | <img src="masters/logo/bujia-oval-logo-v1.0.0-red-cream.png" alt="Logo ovalado principal de Bujía" width="110"> | [PNG](masters/logo/bujia-oval-logo-v1.0.0-red-cream.png) | `approved` | [Este archivo](masters/logo/bujia-oval-logo-v1.0.0-red-cream.png) | Rótulo manuscrito rojo en óvalo crema con contorno rojo y exterior transparente. |
+| `bujia-wordmark-sticker` | [Logo tipográfico con fondo azul marino](designs/stickers/bujia-wordmark-sticker-v1.0.0-navy.md) | `stickers` | `unknown` | `1.0.0` | <img src="designs/stickers/bujia-wordmark-sticker-v1.0.0-navy.jpeg" alt="Logo tipográfico con fondo azul marino" width="110"> | [JPEG](designs/stickers/bujia-wordmark-sticker-v1.0.0-navy.jpeg) | `approved` | — | Rótulo amarillo inclinado, lema blanco y marco claro sobre fondo azul marino. |
+| `bujia-wordmark-sticker` | [Logo tipográfico con fondo negro](designs/stickers/bujia-wordmark-sticker-v1.1.0-black.md) | `stickers` | `unknown` | `1.1.0` | <img src="designs/stickers/bujia-wordmark-sticker-v1.1.0-black.jpeg" alt="Logo tipográfico con fondo negro" width="110"> | [JPEG](designs/stickers/bujia-wordmark-sticker-v1.1.0-black.jpeg) | `approved` | — | Rótulo amarillo inclinado, lema blanco y marco claro sobre fondo negro. |
+| `bujia-wordmark-sticker` | [Logo tipográfico con fondo rojo](designs/stickers/bujia-wordmark-sticker-v1.2.0-red.md) | `stickers` | `unknown` | `1.2.0` | <img src="designs/stickers/bujia-wordmark-sticker-v1.2.0-red.jpeg" alt="Logo tipográfico con fondo rojo" width="110"> | [JPEG](designs/stickers/bujia-wordmark-sticker-v1.2.0-red.jpeg) | `approved` | — | Rótulo amarillo inclinado, lema blanco y marco claro sobre fondo rojo. |
 
 ## Personajes
 
@@ -21,6 +25,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `giraffe-at-workbench` | [Jirafa en el taller con lema de apoyo local](drafts/scenes/giraffe-at-workbench-v1.0.0-support-local.md) | `scenes` | `ai-generated` | `1.0.0` | <img src="drafts/scenes/giraffe-at-workbench-v1.0.0-support-local.png" alt="Jirafa en el taller con lema de apoyo local" width="110"> | [PNG](drafts/scenes/giraffe-at-workbench-v1.0.0-support-local.png) | `review` | — | Jirafa trabajando en una guitarra ante un panel de herramientas, en verde, crema y negro. |
 | `giraffe-at-workbench` | [Jirafa en el taller con lema Repair or Die](drafts/scenes/giraffe-at-workbench-v1.1.0-repair-or-die.md) | `scenes` | `ai-generated` | `1.1.0` | <img src="drafts/scenes/giraffe-at-workbench-v1.1.0-repair-or-die.png" alt="Jirafa en el taller con lema Repair or Die" width="110"> | [PNG](drafts/scenes/giraffe-at-workbench-v1.1.0-repair-or-die.png) | `review` | — | Jirafa reparando una guitarra en una escena verde y crema con el lema «Repair or Die». |
+| `giraffe-workshop-illustration` | [Jirafa en el taller con taza verde](drafts/scenes/giraffe-workshop-illustration-v1.0.0-sound-loud-set-proud.md) | `scenes` | `human` | `1.0.0` | <img src="drafts/scenes/giraffe-workshop-illustration-v1.0.0-sound-loud-set-proud.png" alt="Jirafa en el taller con taza verde" width="110"> | [PNG](drafts/scenes/giraffe-workshop-illustration-v1.0.0-sound-loud-set-proud.png) | `review` | — | Jirafa con taza verde en el taller, rodeada de instrumentos y acompañada del lema «Sound Loud, Set Proud». |
 
 ## Fachada
 
