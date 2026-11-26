@@ -1,7 +1,8 @@
 # Fachada con firma Bujía Project Garage
 
 - Identificador y versión: `facade-project-garage`, `1.0.0`.
-- Estado: `review`.
+- Estado: `approved`.
+- Aprobación: el propietario aprobó esta propuesta individual el 2026-11-26.
 - Procedencia: `ai-generated`, heredada de la lámina.
 - Archivo: [PNG](facade-project-garage-v1.0.0-coral-logo.png).
 - Origen: [lámina con logo rojo rosado](facade-sheet-v1.7.0-badge-concepts-coral-logo.md).

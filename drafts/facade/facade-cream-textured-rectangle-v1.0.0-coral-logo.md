@@ -1,7 +1,8 @@
 # Fachada con rectángulo texturizado
 
 - Identificador y versión: `facade-cream-textured-rectangle`, `1.0.0`.
-- Estado: `review`.
+- Estado: `approved`.
+- Aprobación: el propietario aprobó esta propuesta individual el 2026-11-26.
 - Procedencia: `ai-generated`, heredada de la lámina.
 - Archivo: [PNG](facade-cream-textured-rectangle-v1.0.0-coral-logo.png).
 - Origen: [lámina con logo rojo rosado](facade-sheet-v1.6.0-cream-background-coral-logo.md).

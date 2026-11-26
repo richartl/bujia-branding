@@ -1,7 +1,8 @@
 # Fachada con rectángulo inclinado
 
 - Identificador y versión: `facade-white-angled-rectangle`, `1.0.0`.
-- Estado: `review`.
+- Estado: `approved`.
+- Aprobación: el propietario aprobó esta propuesta individual el 2026-11-26.
 - Procedencia: `ai-generated`, heredada de la lámina.
 - Archivo: [PNG](facade-white-angled-rectangle-v1.0.0-coral-logo.png).
 - Origen: [lámina con logo rojo rosado](facade-sheet-v1.5.0-white-background-coral-logo.md).
