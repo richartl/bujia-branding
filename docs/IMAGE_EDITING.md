@@ -21,3 +21,9 @@ En toda modalidad crea un archivo independiente, completa la [ficha de variante]
 Entrega una propuesta por imagen. Si el propietario pide varias propuestas, crea un archivo independiente para cada una. Usa una lámina con varias opciones únicamente cuando el propietario la solicite expresamente. Una propuesta individual puede incluir varios elementos que forman parte de la misma composición.
 
 Muestra cada imagen directamente en la respuesta para revisión y enlaza su archivo cuando esté disponible. Si la sesión no puede mostrarla, indica esa limitación y facilita el acceso al archivo.
+
+## Logo, Instagram y silueta de stickers
+
+En cada sticker, usa el [logo ovalado maestro](../masters/logo/bujia-oval-logo-v1.0.0-red-cream.md) en un lugar discreto que pertenezca a la escena, como un letrero, una etiqueta sobre un objeto o un parche. Si se coloca cerca del borde, únelo visual y físicamente al cuerpo de la ilustración. Incluye siempre `@bujiaprojectgarage`, escrito exactamente así, legible al tamaño previsto y dentro de la misma silueta.
+
+Comprueba que el contorno exterior previsto para el corte encierra ambos elementos en una pieza. Evita logos, textos e islas decorativas que exijan cortes separados. Si falta el tamaño final o un troquel confirmado, presenta el resultado como propuesta pendiente de validación para impresión.
