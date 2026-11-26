@@ -75,6 +75,8 @@
 
 | Identificador | Nombre | Categoría | Procedencia | Versión | Vista previa | Archivo | Estado | Maestra relacionada | Descripción |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `current-facade` | [Fachada actual · foto original](references/photography/facade/README.md) | `photography` | Fotografía | `1.0.0` | — | [HEIC](references/photography/facade/current-facade-v1.0.0.heic) | `approved` | — | Fuente de la apariencia actual del taller según el propietario. |
+| `current-facade` | [Fachada actual · referencia de trabajo](references/photography/facade/README.md) | `photography` | Fotografía con retoque de IA | `1.1.0` | <img src="references/photography/facade/current-facade-v1.1.0-no-seated-person.png" alt="Fachada actual sin persona sentada" width="110"> | [PNG](references/photography/facade/current-facade-v1.1.0-no-seated-person.png) | `review` | — | Copia de referencia con retoque en el muro y el piso. |
 
 ## Diseños de merchandising
 

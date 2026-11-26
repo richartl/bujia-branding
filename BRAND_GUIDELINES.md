@@ -19,6 +19,10 @@ Para una creación nueva, aplica este orden de prioridad:
 
 En una edición manda el archivo exacto seleccionado, cualquiera que sea su procedencia. En una variante usa ese archivo, la maestra original y una referencia humana pertinente cuando estén disponibles. Así se conservan cambios de versiones previas sin encadenar generaciones que alejen el resultado de la identidad gráfica. La evidencia visual prevalece sobre su descripción y las referencias externas sirven únicamente como contexto.
 
+## Fachada actual
+
+Para cualquier diseño de fachada, usa la [referencia fotográfica vigente](references/photography/facade/README.md) como fuente de su geometría, materiales, colores y rotulación. Las ilustraciones existentes pueden orientar el estilo. Cambia la referencia arquitectónica cuando lo indique el propietario.
+
 ## Preservación del estilo gráfico original
 
 Conserva grosor e irregularidad del trazo, contornos, proporciones, anatomía estilizada, expresiones, ojos, bocas, manos, extremidades, rasgos faciales y silueta. Respeta la representación de objetos, el nivel de detalle, las imperfecciones intencionales, la paleta, el sombreado existente, la textura y el carácter artesanal. Una modificación autoriza solo el cambio solicitado. Evita corregir, suavizar, modernizar, embellecer, sustituir personajes o redibujar elementos sin autorización. Comprueba que el resultado pertenece a la misma familia gráfica.
