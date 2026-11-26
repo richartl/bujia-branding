@@ -15,3 +15,5 @@
 | Otros agentes | Abre [AGENTS.md](../AGENTS.md) y proporciona los documentos enlazados junto con los originales relevantes. |
 
 Si la skill no se activa automáticamente, pide que abra su [SKILL.md](../.agents/skills/bujia-branding/SKILL.md) y siga los documentos enlazados. GitHub conserva el historial, pero el acceso a texto del repositorio puede no incluir acceso visual a binarios ni transferencia a una herramienta gráfica. Adjunta la fuente exacta si el agente no puede verla. Si el agente carece de edición o generación, puede ayudar con el catálogo, la ficha o el pedido para una sesión que sí disponga de esas funciones. La edición generativa puede alterar zonas ajenas al cambio, por lo que requiere comparación con el original. La skill por sí sola no garantiza fidelidad exacta.
+
+Al solicitar propuestas, recibirás una imagen por opción y podrás ver cada una en la respuesta cuando la sesión lo permita. Puedes pedir una lámina comparativa de forma expresa. Consulta la [regla de entrega](IMAGE_EDITING.md#entrega-de-propuestas).

@@ -15,3 +15,9 @@ Usa la versión solicitada, la maestra y las referencias humanas pertinentes cua
 Crea una obra nueva dentro del lenguaje de Bujía aplicando la jerarquía de la guía visual. Guarda el resultado inicial como `draft`. Su incorporación como maestra sigue el [flujo de aprobación](ASSET_WORKFLOW.md).
 
 En toda modalidad crea un archivo independiente, completa la [ficha de variante](../templates/variation.md) o de [diseño](../templates/design.md) y realiza la [revisión visual](APPROVAL_CHECKLIST.md). Si falta acceso a la imagen o capacidad de edición, sigue la [guía de inicio](GETTING_STARTED.md).
+
+## Entrega de propuestas
+
+Entrega una propuesta por imagen. Si el propietario pide varias propuestas, crea un archivo independiente para cada una. Usa una lámina con varias opciones únicamente cuando el propietario la solicite expresamente. Una propuesta individual puede incluir varios elementos que forman parte de la misma composición.
+
+Muestra cada imagen directamente en la respuesta para revisión y enlaza su archivo cuando esté disponible. Si la sesión no puede mostrarla, indica esa limitación y facilita el acceso al archivo.
