@@ -22,6 +22,12 @@ Entrega una propuesta por imagen. Si el propietario pide varias propuestas, crea
 
 Muestra cada imagen directamente en la respuesta para revisión y enlaza su archivo cuando esté disponible. Si la sesión no puede mostrarla, indica esa limitación y facilita el acceso al archivo.
 
+## Destino del diseño
+
+Si el propietario indica un destino, adapta la composición, las dimensiones, el formato y la preparación a ese uso. Puede ser una publicación para redes sociales, una playera, otra pieza de merchandising, un sticker u otro medio. Para producción, consulta los [requisitos del medio](PRINT_PRODUCTION.md).
+
+Si el encargo no indica destino, entrega una propuesta visual adaptable. Aplica las reglas específicas de corte, transparencia y branding de stickers cuando el encargo sea para stickers.
+
 ## Logo, Instagram y silueta de stickers
 
 En cada sticker, usa el [logo ovalado maestro](../masters/logo/bujia-oval-logo-v1.0.0-red-cream.md) en un lugar discreto que pertenezca a la escena, como un letrero, una etiqueta sobre un objeto o un parche. Si se coloca cerca del borde, únelo visual y físicamente al cuerpo de la ilustración. Incluye siempre `@bujiaprojectgarage`, escrito exactamente así, legible al tamaño previsto y dentro de la misma silueta.
