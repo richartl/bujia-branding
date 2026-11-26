@@ -26,6 +26,10 @@ Muestra cada imagen directamente en la respuesta para revisión y enlaza su arch
 
 En cada sticker, usa el [logo ovalado maestro](../masters/logo/bujia-oval-logo-v1.0.0-red-cream.md) en un lugar discreto que pertenezca a la escena, como un letrero, una etiqueta sobre un objeto o un parche. Si se coloca cerca del borde, únelo visual y físicamente al cuerpo de la ilustración. Incluye siempre `@bujiaprojectgarage`, escrito exactamente así, legible al tamaño previsto y dentro de la misma silueta.
 
+Usa una sola aparición del logo por sticker. Si el logo ya forma parte de un elemento de la escena, como la fachada, la ropa o una herramienta, ese logo cuenta como la marca del diseño.
+
+Para la serie «Apoya a tu taller local», prioriza ilustraciones y caricaturas. Las categorías de la serie son **bajos, guitarras, docerolas, bajoquintos, tololoches, acústicas y eléctricos**. Usa el nombre de la categoría elegida en el lema y representa el instrumento correspondiente.
+
 ### Formato de corte
 
 Si el propietario pide formato cuadrado o de silueta, usa ese formato. Si puedes identificar el formato por la composición, aplica la opción correspondiente. Cuando haya duda, entrega dos versiones independientes, una cuadrada y otra de silueta, y muestra ambas.
