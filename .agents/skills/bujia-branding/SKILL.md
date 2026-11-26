@@ -11,6 +11,8 @@ El [protocolo](../../../docs/IMAGE_EDITING.md) define `STRICT_EDIT`, `CONTROLLED
 
 Para usar estas instrucciones sin activación automática o resolver el acceso a imágenes, sigue la [guía de inicio](../../../docs/GETTING_STARTED.md).
 
+Aplica la [regla de congruencia y variedad de instrumentos](../../../docs/IMAGE_EDITING.md#congruencia-de-la-escena-y-variedad-de-instrumentos) y revisa la imagen antes de mostrarla.
+
 Aplica la [regla de entrega de propuestas](../../../docs/IMAGE_EDITING.md#entrega-de-propuestas) y muestra cada imagen al propietario para revisión.
 
 Antes de preparar la imagen, aplica la [regla de destino del diseño](../../../docs/IMAGE_EDITING.md#destino-del-diseño).

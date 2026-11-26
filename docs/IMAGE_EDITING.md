@@ -16,6 +16,12 @@ Crea una obra nueva dentro del lenguaje de Bujía aplicando la jerarquía de la 
 
 En toda modalidad crea un archivo independiente, completa la [ficha de variante](../templates/variation.md) o de [diseño](../templates/design.md) y realiza la [revisión visual](APPROVAL_CHECKLIST.md). Si falta acceso a la imagen o capacidad de edición, sigue la [guía de inicio](GETTING_STARTED.md).
 
+## Congruencia de la escena y variedad de instrumentos
+
+Antes de generar, identifica el instrumento, el modelo o la silueta de referencia y la operación que ocurre en la escena. En una serie, alterna modelos, siluetas y configuraciones de forma intencional. Por ejemplo, puedes usar guitarras Fender Telecaster o Mustang, bajos Warwick Corvette o Music Man StingRay. Usa referencias del modelo elegido y conserva sus rasgos reconocibles. En una edición puntual prevalece el instrumento de origen, salvo que el propietario pida sustituirlo.
+
+Antes de presentar cualquier imagen generada, inspecciona el resultado completo y amplía las zonas de trabajo, cruces y uniones. Usa la [revisión de congruencia](APPROVAL_CHECKLIST.md#congruencia) para corregir discontinuidades, accesorios incongruentes y acciones imposibles. Si queda un problema que no puedes corregir o verificar, indícalo al mostrar la propuesta.
+
 ## Entrega de propuestas
 
 Entrega una propuesta por imagen. Si el propietario pide varias propuestas, crea un archivo independiente para cada una. Usa una lámina con varias opciones únicamente cuando el propietario la solicite expresamente. Una propuesta individual puede incluir varios elementos que forman parte de la misma composición.
