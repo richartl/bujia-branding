@@ -1,0 +1,7 @@
+# Versionamiento de recursos
+
+Usa `identificador-vMAJOR.MINOR.PATCH[-descriptor].ext` en minúsculas, con guiones y un descriptor opcional en inglés. Usa el mismo nombre base para la ficha Markdown. Comienza en `1.0.0`. Incrementa `PATCH` en correcciones pequeñas, `MINOR` en cambios localizados o variantes controladas y `MAJOR` en rediseños autorizados. Al subir un nivel, vuelve a cero en las posiciones inferiores. Asigna una versión libre dentro del identificador, aunque la fuente sea una versión anterior. Ejemplos hipotéticos: `giraffe-v1.0.0.png`, `giraffe-v1.1.0-yellow-mug.png`, `giraffe-v1.1.1-yellow-mug.png`.
+
+Registra en la ficha la maestra y la ruta y versión exactas de origen. Si esa ruta puede cambiar, registra también el commit disponible que identifica la fuente. Evita nombres como `final2.png`. Guarda cada resultado en un archivo nuevo. Cuando se registren cambios en Git, agrupa recurso, ficha y catálogo para que el historial sea legible.
+
+Para recuperar una versión, empieza en el [catálogo](../CATALOG.md) y abre su enlace. Si ya no está en la ruta actual, localiza el commit y la ruta histórica con `git log --all --follow -- ruta/al/archivo`. El agente puede copiar los bytes de esa versión mediante `git show COMMIT:ruta/histórica` a una ruta nueva previamente comprobada, conservando el original actual y comprobando que el comando terminó con éxito. Documenta el origen si se incorpora la copia recuperada.
