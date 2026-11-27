@@ -4,13 +4,14 @@ import hashlib
 import json
 import re
 import shutil
+from html import escape
+from string import Template
 from pathlib import Path
 from urllib.parse import quote
 
 from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-REPO = "https://github.com/richartl/bujia-branding/blob/main/"
 CATEGORIES = {
     "stickers": "Stickers",
     "t-shirts": "Playeras",
@@ -49,21 +50,62 @@ def category_for(category):
     return "other"
 
 
-def thumbnail(image, output):
+def image_metadata(image, output):
     if image.suffix.lower() not in IMAGE_TYPES:
-        return None
+        return None, None
     name = hashlib.sha256(str(image.relative_to(ROOT)).encode()).hexdigest()[:20] + ".webp"
-    path = output / "thumbs" / name
-    if not path.exists():
-        with Image.open(image) as source:
-            preview = ImageOps.exif_transpose(source).convert("RGBA")
-            preview.thumbnail((560, 560), Image.Resampling.LANCZOS)
-            preview.save(path, quality=82, method=4)
-    return f"thumbs/{name}"
+    with Image.open(image) as source:
+        oriented = ImageOps.exif_transpose(source)
+        width, height = oriented.size
+        metadata = f"{width} × {height} px"
+        dpi = source.info.get("dpi")
+        if dpi and round(dpi[0]) == round(dpi[1]):
+            metadata += f" · {round(dpi[0])} ppp"
+        preview = oriented.convert("RGBA")
+        preview.thumbnail((560, 560), Image.Resampling.LANCZOS)
+        preview.save(output / "thumbs" / name, quality=82, method=4)
+    return f"thumbs/{name}", metadata
+
+
+def file_size(path):
+    size = path.stat().st_size
+    if size >= 1024**2:
+        return f"{size / 1024**2:.1f} MiB"
+    return f"{size / 1024:.1f} KiB"
+
+
+def resource_page(asset, item, output, template):
+    asset_key = str(asset.relative_to(ROOT))
+    suffix = hashlib.sha256(asset_key.encode()).hexdigest()[:10]
+    slug = re.sub(r"[^a-z0-9-]+", "-", asset.stem.lower()).strip("-")
+    folder = f"resources/{slug}-{suffix}"
+    directory = output / folder
+    directory.mkdir(parents=True, exist_ok=False)
+    shutil.copyfile(asset, directory / asset.name)
+    item["file"] = folder + "/" + quote(asset.name)
+    item["page"] = folder + "/"
+    item["thumbnail"], dimensions = image_metadata(asset, output)
+    preview = (
+        f'<img src="../../{escape(item["thumbnail"])}" alt="{escape(item["title"])}">'
+        if item["thumbnail"] else f'<span>{escape(item["format"])}</span>'
+    )
+    html = template.substitute(
+        title=escape(item["title"]),
+        description=escape(item["description"]),
+        category=escape(item["categoryLabel"]),
+        version=escape(item["version"]),
+        format=escape(item["format"]),
+        size=file_size(asset),
+        dimensions=f"<dt>Resolución</dt><dd>{escape(dimensions)}</dd>" if dimensions else "",
+        file=quote(asset.name),
+        preview=preview,
+    )
+    (directory / "index.html").write_text(html, encoding="utf-8")
 
 
 def items_for(output):
     items = []
+    template = Template((ROOT / "site" / "resource.html").read_text(encoding="utf-8"))
     for number, line in enumerate((ROOT / "CATALOG.md").read_text(encoding="utf-8").splitlines(), 1):
         if not line.startswith("| `"):
             continue
@@ -71,6 +113,8 @@ def items_for(output):
         if len(cells) != 10:
             raise ValueError(f"CATALOG.md:{number}: se esperaban 10 columnas")
         identifier, name, category, _, version, _, file, status, _, description = cells
+        if status.strip("`") != "approved":
+            continue
         title_link = LINK.fullmatch(name)
         file_link = LINK.fullmatch(file)
         if not title_link or not file_link:
@@ -80,21 +124,24 @@ def items_for(output):
         asset = repository_path(asset_path)
         repository_path(card_path)
         key = category_for(category.strip("`"))
-        items.append({
+        item = {
             "id": identifier.strip("`"), "title": title,
             "category": key, "categoryLabel": CATEGORIES[key],
-            "version": version.strip("`"), "status": status.strip("`"),
+            "version": version.strip("`"),
             "description": description.replace(r"\|", "|"),
-            "format": format_name, "thumbnail": thumbnail(asset, output),
-            "file": REPO + quote(asset_path), "card": REPO + quote(card_path),
-        })
+            "format": format_name,
+        }
+        resource_page(asset, item, output, template)
+        items.append(item)
     return items
 
 
 def build(output):
     output.mkdir(parents=True, exist_ok=True)
-    (output / "thumbs").mkdir(exist_ok=True)
-    for name in ("index.html", "catalog.css", "catalog.js"):
+    if any(output.iterdir()):
+        raise ValueError(f"Usa un directorio nuevo para generar el sitio: {output}")
+    (output / "thumbs").mkdir()
+    for name in ("index.html", "catalog.css", "catalog.js", "share.js"):
         shutil.copyfile(ROOT / "site" / name, output / name)
     logo = repository_path("masters/logo/bujia-oval-logo-v1.0.0-red-cream.png")
     with Image.open(logo) as source:
@@ -103,8 +150,9 @@ def build(output):
         stamp.thumbnail((216, 98), Image.Resampling.LANCZOS)
         stamp.save(output / "logo.png")
     items = items_for(output)
-    items.sort(key=lambda item: (item["status"] != "approved", item["title"].casefold(), item["version"]))
-    data = {"categories": list(CATEGORIES.items()), "items": items}
+    items.sort(key=lambda item: (item["title"].casefold(), item["version"]))
+    used = {item["category"] for item in items}
+    data = {"categories": [(key, label) for key, label in CATEGORIES.items() if key in used], "items": items}
     (output / "catalog-data.js").write_text(
         "window.catalog = " + json.dumps(data, ensure_ascii=False) + ";\n", encoding="utf-8"
     )

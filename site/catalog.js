@@ -1,20 +1,19 @@
 const data = window.catalog;
 const search = document.querySelector("#search");
-const status = document.querySelector("#status");
 const catalog = document.querySelector("#catalog");
 const nav = document.querySelector("#categories");
 const results = document.querySelector("#results");
 const template = document.querySelector("#card");
-const stateLabels = { approved: "Aprobado", review: "En revisión", draft: "Borrador", archived: "Archivado", rejected: "Rechazado" };
 const normalize = value => value.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase();
 const merch = new Set(["t-shirts", "totebags", "caps", "merch"]);
 let category = "";
 
 document.querySelector(".controls").addEventListener("submit", event => event.preventDefault());
 search.addEventListener("input", render);
-status.addEventListener("change", render);
 
-for (const [key, label] of [["", "Todos"], ["all-merch", "Merch"], ...data.categories]) {
+const filters = [["", "Todos"], ...data.categories];
+if (data.categories.some(([key]) => merch.has(key))) filters.splice(1, 0, ["all-merch", "Merch"]);
+for (const [key, label] of filters) {
   const button = document.createElement("button");
   button.type = "button";
   button.textContent = label;
@@ -31,8 +30,7 @@ function render() {
   const terms = normalize(search.value).trim().split(/\s+/);
   const matches = data.items.filter(item => {
     const words = normalize([item.title, item.description, item.id, item.categoryLabel, item.version].join(" "));
-    return matchesCategory(item.category) && (!status.value || item.status === status.value)
-      && terms.every(term => words.includes(term));
+    return matchesCategory(item.category) && terms.every(term => words.includes(term));
   });
 
   for (const button of nav.children) {
@@ -64,8 +62,8 @@ function cardFor(item) {
   const fragment = template.content.cloneNode(true);
   const preview = fragment.querySelector(".preview");
   const state = fragment.querySelector(".state");
-  preview.href = item.file;
-  preview.setAttribute("aria-label", `Abrir ${item.title}`);
+  preview.href = item.page;
+  preview.setAttribute("aria-label", `Ver detalles de ${item.title}`);
   if (item.thumbnail) {
     const image = new Image();
     image.loading = "lazy";
@@ -75,13 +73,17 @@ function cardFor(item) {
   } else {
     preview.textContent = item.format;
   }
-  state.dataset.status = item.status;
-  state.textContent = stateLabels[item.status] ?? item.status;
+  state.dataset.status = "approved";
+  state.textContent = "Aprobado";
   fragment.querySelector(".version").textContent = `v${item.version}`;
-  fragment.querySelector("h3").textContent = item.title;
+  const record = fragment.querySelector(".record");
+  record.textContent = item.title;
+  record.href = item.page;
   fragment.querySelector("p").textContent = item.description;
   fragment.querySelector(".file").href = item.file;
-  fragment.querySelector(".record").href = item.card;
+  const share = fragment.querySelector("[data-share]");
+  share.dataset.share = item.page;
+  share.dataset.shareTitle = item.title;
   return fragment;
 }
 

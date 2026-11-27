@@ -26,8 +26,8 @@ Las referencias se agrupan por cultura punk, ilustración, serigrafía, fanzines
 
 ## Catálogo visual
 
-El [catálogo de recursos](CATALOG.md) alimenta un sitio de GitHub Pages con miniaturas, búsqueda y filtros por uso y estado. Los enlaces a las fichas y archivos originales respetan el acceso al repositorio.
+El [catálogo de recursos](CATALOG.md) alimenta un sitio de GitHub Pages con los recursos aprobados. Las categorías aparecen cuando tienen contenido. Cada recurso tiene una página propia con información, descarga directa y un enlace para compartir.
 
-Para probarlo localmente, instala Pillow 12.2.0 y ejecuta `python site/build.py /tmp/bujia-catalog` desde la raíz. Abre el `index.html` generado. Los cambios en el catálogo y sus recursos regeneran el sitio mediante GitHub Actions.
+Para probarlo localmente, instala Pillow 12.2.0 y ejecuta `python site/build.py /tmp/bujia-catalog-preview` desde la raíz con un directorio de destino nuevo o vacío. Sirve el resultado con `python -m http.server --directory /tmp/bujia-catalog-preview` y abre el catálogo en el navegador.
 
-En **Settings → Pages**, selecciona **GitHub Actions** como origen. El flujo **Catálogo en GitHub Pages** despliega desde `main` con la visibilidad configurada en Pages. En el sitio se publican miniaturas y datos de los recursos del catálogo. Los archivos originales y sus fichas siguen enlazados al repositorio.
+En **Settings → Pages**, selecciona **GitHub Actions** como origen. El flujo **Catálogo en GitHub Pages** despliega desde `main` con la visibilidad configurada en Pages. La publicación incluye las miniaturas, la información y los archivos descargables de las versiones aprobadas.

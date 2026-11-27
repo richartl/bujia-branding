@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$title · Bujía Project Music</title>
+  <meta name="description" content="$description">
+  <link rel="stylesheet" href="../../catalog.css">
+  <script src="../../share.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap resource-header">
+      <a href="../../">← Volver al catálogo</a>
+      <img src="../../logo.png" width="108" height="49" alt="Bujía">
+    </div>
+  </header>
+  <main class="wrap resource">
+    <div class="resource-image">$preview</div>
+    <div class="resource-details">
+      <div class="meta"><span class="state" data-status="approved">Aprobado</span></div>
+      <h1>$title</h1>
+      <p>$description</p>
+      <dl>
+        <dt>Categoría</dt><dd>$category</dd>
+        <dt>Versión</dt><dd>$version</dd>
+        <dt>Formato</dt><dd>$format</dd>
+        <dt>Tamaño del archivo</dt><dd>$size</dd>
+        $dimensions
+      </dl>
+      <div class="links">
+        <a class="action" href="$file" download>Descargar</a>
+        <button class="action" type="button" data-share="./" data-share-title="$title">Compartir</button>
+      </div>
+      <p id="share-status" class="notice" role="status" hidden></p>
+    </div>
+  </main>
+</body>
+</html>
