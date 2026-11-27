@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo · Bujía Project Music</title>
+  <link rel="stylesheet" href="catalog.css">
+  <script src="catalog-data.js" defer></script>
+  <script src="catalog.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap hero">
+      <img src="logo.png" width="108" height="49" alt="Bujía">
+      <h1>Catálogo<br>de recursos</h1>
+      <a href="https://github.com/richartl/bujia-branding/blob/main/CATALOG.md">Catálogo en GitHub ↗</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <form class="controls" role="search">
+      <label>Buscar recurso
+        <input type="search" id="search" placeholder="Ej. docerola, fachada o DTF">
+      </label>
+      <label>Estado
+        <select id="status">
+          <option value="">Todos</option>
+          <option value="approved">Aprobados</option>
+          <option value="review">En revisión</option>
+          <option value="draft">Borradores</option>
+          <option value="archived">Archivados</option>
+          <option value="rejected">Rechazados</option>
+        </select>
+      </label>
+    </form>
+    <nav id="categories" aria-label="Categorías"></nav>
+    <p id="results" role="status" aria-live="polite"></p>
+    <div id="catalog"></div>
+    <noscript>Activa JavaScript para explorar los recursos del catálogo.</noscript>
+  </main>
+  <template id="card">
+    <article class="card">
+      <a class="preview"></a>
+      <div class="details">
+        <div class="meta"><span class="state"></span><span class="version"></span></div>
+        <h3></h3>
+        <p></p>
+        <div class="links"><a class="file">Abrir archivo ↗</a><a class="record">Ficha ↗</a></div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>

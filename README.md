@@ -23,3 +23,11 @@ Para empezar, coloca tus imágenes en [inbox](inbox/) o adjúntalas al agente y 
 Consulta el [catálogo](CATALOG.md), la [guía visual](BRAND_GUIDELINES.md) y el [historial documental](CHANGELOG.md). Los agentes comienzan por [AGENTS.md](AGENTS.md).
 
 Las referencias se agrupan por cultura punk, ilustración, serigrafía, fanzines, fotografía y tableros visuales. Los proyectos de diseño se agrupan por stickers, playeras, totebags, gorras, flyers, posters, señalética, empaque y redes sociales. La carpeta `references` dentro de la skill queda disponible para material complementario específico del protocolo. Las reglas vigentes se consultan en los documentos enlazados por la skill.
+
+## Catálogo visual
+
+El [catálogo de recursos](CATALOG.md) alimenta un sitio de GitHub Pages con miniaturas, búsqueda y filtros por uso y estado. Los enlaces a las fichas y archivos originales respetan el acceso al repositorio.
+
+Para probarlo localmente, instala Pillow 12.2.0 y ejecuta `python site/build.py /tmp/bujia-catalog` desde la raíz. Abre el `index.html` generado. Los cambios en el catálogo y sus recursos regeneran el sitio mediante GitHub Actions.
+
+En **Settings → Pages**, selecciona **GitHub Actions** como origen. El flujo publica si Pages informa visibilidad privada. Si GitHub solo ofrece un sitio público, confirma primero que las miniaturas y los metadatos se puedan compartir. Con esa autorización, la variable de Actions `CATALOG_ALLOW_PUBLIC=true` habilita el despliegue público. Puedes relanzar el flujo **Catálogo en GitHub Pages** después de configurar el acceso.
