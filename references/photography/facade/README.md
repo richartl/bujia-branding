@@ -9,3 +9,5 @@ Esta es la referencia visual vigente para cualquier diseño de la fachada, por i
 Conserva el muro verde petróleo, el ventanal izquierdo con marco de madera y el óvalo rojo y crema, la puerta de madera a la derecha con rotulación blanca, el toldo de lámina y la maceta de barro junto a la puerta. Toma la foto original como fuente para proporciones, ubicación y detalles de la rotulación. El estilo de la ilustración puede adaptarse a la solicitud.
 
 Consulta la [paleta Fachada](../../../identity/colors.md#fachada) para los tonos muestreados en la foto original.
+
+El propietario aprobó la copia de trabajo `1.1.0` el 2026-11-26.

@@ -1,7 +1,7 @@
 # Fachada verde y crema con logo rojo rosado
 
 - Identificador y versión: `facade`, `1.6.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-v1.6.0-green-cream-coral-logo.png).
 - Origen: [Fachada verde y crema](facade-v1.2.0-green-cream.md).

@@ -1,7 +1,7 @@
 # Lámina de fachadas sobre blanco con logo rojo rosado
 
 - Identificador y versión: `facade-sheet`, `1.5.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-sheet-v1.5.0-white-background-coral-logo.png).
 - Origen: [Lámina de fachadas sobre blanco](facade-sheet-v1.2.0-white-background.md).

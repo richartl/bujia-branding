@@ -2,7 +2,7 @@
 
 - Identificador y versión: `dtf-tote-workbench`, `1.0.0`.
 - Aplicación: `totebags`, impresión DTF.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Archivo: [PNG](dtf-tote-workbench-v1.0.0.png).
 - Origen: [JPG recibido](../../../inbox/totebag.jpeg).
 - Método: separación cuando corresponde, reconstrucción generativa y ampliación raster. Pueden variar detalles finos de la textura y el dibujo.

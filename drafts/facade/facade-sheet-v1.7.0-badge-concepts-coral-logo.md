@@ -1,7 +1,7 @@
 # Lámina panorámica de emblemas con logo rojo rosado
 
 - Identificador y versión: `facade-sheet`, `1.7.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-sheet-v1.7.0-badge-concepts-coral-logo.png).
 - Origen: [Lámina panorámica de emblemas](facade-sheet-v1.4.0-badge-concepts.md).

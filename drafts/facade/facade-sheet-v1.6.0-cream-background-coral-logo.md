@@ -1,7 +1,7 @@
 # Lámina de fachadas sobre crema con logo rojo rosado
 
 - Identificador y versión: `facade-sheet`, `1.6.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-sheet-v1.6.0-cream-background-coral-logo.png).
 - Origen: [Lámina de fachadas sobre crema](facade-sheet-v1.3.0-cream-background.md).

@@ -1,7 +1,7 @@
 # Fachada con banqueta amarilla con logo rojo rosado
 
 - Identificador y versión: `facade`, `1.5.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-v1.5.0-yellow-sidewalk-coral-logo.png).
 - Origen: [Fachada con banqueta amarilla](facade-v1.1.0-yellow-sidewalk.md).

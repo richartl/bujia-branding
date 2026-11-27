@@ -1,7 +1,7 @@
 # Fachada con piso crema con logo rojo rosado
 
 - Identificador y versión: `facade`, `1.8.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-v1.8.0-cream-floor-coral-logo.png).
 - Origen: [Fachada con piso crema](facade-v1.4.0-cream-floor.md).

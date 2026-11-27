@@ -1,7 +1,7 @@
 # Fachada verde y amarilla con logo rojo rosado
 
 - Identificador y versión: `facade`, `1.7.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Procedencia: `ai-generated`.
 - Archivo: [PNG](facade-v1.7.0-green-yellow-coral-logo.png).
 - Origen: [Fachada verde y amarilla](facade-v1.3.0-green-yellow.md).

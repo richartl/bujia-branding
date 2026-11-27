@@ -5,7 +5,7 @@
 - Archivo: [support-local-guitar-shop-v1.2.0-green-oval.png](support-local-guitar-shop-v1.2.0-green-oval.png).
 - Versión de catálogo: `1.2.0`.
 - Procedencia: `ai-generated`, confirmada por el propietario. Modelo, fecha de generación y derechos de uso por confirmar.
-- Estado: `review`, pendiente de aprobación.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Maestra relacionada: pendiente de identificar.
 - Archivo recibido: `F91F9328-3A34-481B-9388-7A3464DF6883 2.PNG` en la raíz del commit `89222174163d2c79c692830f30c330fa3064bac2`.
 - Generación de origen y referencias: por confirmar. La numeración agrupa piezas por tema y no establece una secuencia de generación.

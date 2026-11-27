@@ -2,7 +2,7 @@
 
 - Identificador y versión: `dtf-shirt-back`, `1.0.0`.
 - Aplicación: `t-shirts`, impresión DTF.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Archivo: [PNG](dtf-shirt-back-v1.0.0.png).
 - Origen: [JPG recibido](../../../inbox/playeratrasera.jpeg).
 - Método: separación cuando corresponde, reconstrucción generativa y ampliación raster. Pueden variar detalles finos de la textura y el dibujo.
