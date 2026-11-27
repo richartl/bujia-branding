@@ -43,14 +43,23 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ALLOW_PUBLIC: ${{ vars.CATALOG_ALLOW_PUBLIC }}
         run: |
-          if visibility=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq 'if .public == false then "private" elif .public == true then "public" else "unknown" end'); then
-            if [[ "$visibility" == private || ( "$visibility" == public && "$ALLOW_PUBLIC" == true ) ]]; then
-              echo "publish=true" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
+          settings=$(gh api "repos/$GITHUB_REPOSITORY/pages" 2>/dev/null) || settings=''
+          if [[ -z "$settings" ]]; then
+            reason='GitHub Actions no pudo leer la configuración de Pages.'
+          elif [[ "$(jq -r '.build_type' <<< "$settings")" != workflow ]]; then
+            reason='Pages debe usar GitHub Actions como origen.'
+          elif jq -e '.public == false' <<< "$settings" >/dev/null ||
+               { [[ "$ALLOW_PUBLIC" == true ]] && jq -e '.public == true' <<< "$settings" >/dev/null; }; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          else
+            reason='Pages no confirma acceso privado y el repositorio no tiene autorización explícita para publicar el catálogo en público.'
           fi
           echo "publish=false" >> "$GITHUB_OUTPUT"
-          echo "::notice::Catálogo construido. Para publicar, activa Pages con GitHub Actions y acceso privado, o autoriza expresamente una publicación pública."
+          echo "::notice::$reason"
+          printf '%s\n' "Catálogo construido. Despliegue omitido. $reason" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/configure-pages@v5
+        if: steps.visibility.outputs.publish == 'true'
       - uses: actions/upload-pages-artifact@v3
         if: steps.visibility.outputs.publish == 'true'
         with:
