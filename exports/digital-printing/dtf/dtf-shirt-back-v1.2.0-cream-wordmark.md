@@ -2,7 +2,7 @@
 
 - Identificador y versión: `dtf-shirt-back`, `1.2.0`.
 - Aplicación: DTF para playera negra.
-- Estado: `review`.
+- Estado: `approved`. El propietario aprobó esta versión el 2026-11-26.
 - Archivo: [PNG](dtf-shirt-back-v1.2.0-cream-wordmark.png).
 - Origen: [variante con rótulo negro](dtf-shirt-back-v1.1.0-black-wordmark.md).
 - Cambio: rótulo caligráfico «Bujía» en crema `#FFF2D5`, de la [paleta Jirafa en el taller](../../../identity/colors.md#jirafa-en-el-taller). El logo ovalado del ventanal conserva el rojo.
