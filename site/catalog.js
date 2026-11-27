@@ -29,7 +29,7 @@ function matchesCategory(key) {
 function render() {
   const terms = normalize(search.value).trim().split(/\s+/);
   const matches = data.items.filter(item => {
-    const words = normalize([item.searchTerms, item.id, item.categoryLabel].join(" "));
+    const words = normalize([item.searchTerms, item.groupTitle, item.id, item.categoryLabel].join(" "));
     return matchesCategory(item.category) && terms.every(term => words.includes(term));
   });
 
@@ -75,10 +75,18 @@ function cardFor(item) {
   }
   state.dataset.status = "approved";
   state.textContent = "Aprobado";
-  fragment.querySelector(".version").textContent = item.versionCount === 1
-    ? "1 versión" : `${item.versionCount} versiones`;
+  const version = fragment.querySelector(".version");
+  if (item.versionCount === 1) {
+    version.textContent = "1 versión";
+  } else {
+    const variants = document.createElement("a");
+    variants.href = item.page + "#versions-heading";
+    variants.textContent = `${item.versionCount} versiones`;
+    variants.setAttribute("aria-label", `Ver las ${item.versionCount} versiones de ${item.groupTitle}`);
+    version.append(variants);
+  }
   const record = fragment.querySelector(".record");
-  record.textContent = item.title;
+  record.textContent = item.groupTitle;
   record.href = item.page;
   fragment.querySelector("p").textContent = item.description;
   fragment.querySelector(".file").href = item.file;

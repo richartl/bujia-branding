@@ -34,6 +34,12 @@ LINK = re.compile(r"\[(.+)\]\(([^)]+)\)")
 IMAGE_TYPES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 # These older identifiers name a series that contains distinct compositions.
 SERIES_IDS = {"facade", "facade-sheet", "giraffe-at-workbench", "support-local-guitar-shop"}
+GROUP_TITLES = {
+    "puro-bujia-cartoon": "Puro Bujía",
+    "dtf-shirt-chest": "Playera · solapa DTF",
+    "dtf-shirt-back": "Playera · espalda DTF",
+    "dtf-tote-facade": "Totebag · fachada DTF",
+}
 # Early cream DTF links were shared with dots in the version number.
 SHARED_LINK_STEMS = {
     "dtf-shirt-chest-v1.2.0-cream-wordmark",
@@ -133,7 +139,7 @@ def versions_for(versions, current):
         )
     return (
         '<section class="resource-versions" aria-labelledby="versions-heading">'
-        f'<h2 id="versions-heading">Versiones ({len(versions)})</h2>'
+        f'<h2 id="versions-heading">Versiones de {escape(current["groupTitle"])} ({len(versions)})</h2>'
         f'<div class="grid">{"".join(cards)}</div></section>'
     )
 
@@ -218,11 +224,13 @@ def build(output):
     items = []
     for versions in groups.values():
         versions.sort(key=representative_key, reverse=True)
+        group_title = GROUP_TITLES.get(versions[0]["id"], versions[0]["title"])
         for item in versions:
+            item["groupTitle"] = group_title
             resource_page(item, versions, output, template)
         search_terms = " ".join(f'{item["title"]} {item["description"]} {item["version"]}' for item in versions)
         items.append(dict(versions[0], versionCount=len(versions), searchTerms=search_terms))
-    items.sort(key=lambda item: item["title"].casefold())
+    items.sort(key=lambda item: item["groupTitle"].casefold())
     used = {item["category"] for item in items}
     data = {"categories": [(key, label) for key, label in CATEGORIES.items() if key in used], "items": items}
     (output / "catalog-data.js").write_text(

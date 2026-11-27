@@ -1,7 +1,7 @@
 # Totebag · fachada con rótulo negro
 
 - Identificador y versión: `dtf-tote-facade`, `1.1.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario indicó publicar esta versión el 2026-11-26.
 - Archivo: [PNG](dtf-tote-facade-v1.1.0-black-wordmark.png).
 - Origen: [versión con rótulo rojo](dtf-tote-facade-v1.0.0.md).
 - Cambio: recolor localizado a negro `#000000` del rótulo caligráfico «Bujía». El logo ovalado del ventanal y los rayos conservaron sus colores.

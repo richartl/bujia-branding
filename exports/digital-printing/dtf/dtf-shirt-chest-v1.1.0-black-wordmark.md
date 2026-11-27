@@ -1,7 +1,7 @@
 # Playera · solapa con rótulo negro
 
 - Identificador y versión: `dtf-shirt-chest`, `1.1.0`.
-- Estado: `review`.
+- Estado: `approved`. El propietario indicó publicar esta versión el 2026-11-26.
 - Archivo: [PNG](dtf-shirt-chest-v1.1.0-black-wordmark.png).
 - Origen: [versión con rótulo rojo](dtf-shirt-chest-v1.0.0.md).
 - Cambio: recolor localizado a negro `#000000` del rótulo caligráfico «Bujía». La línea «Project Music» y el rayo conservaron sus colores.
