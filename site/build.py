@@ -119,6 +119,15 @@ def preview_for(item):
     return f'<img src="../../{escape(item["thumbnail"])}" alt="{escape(item["title"])}">'
 
 
+def code_markup(code):
+    code = escape(code)
+    return (
+        f'<div class="reference-code"><code>{code}</code>'
+        f'<button class="action" type="button" data-copy-code="{code}" '
+        f'aria-label="Copiar código {code}">Copiar código</button></div>'
+    )
+
+
 def versions_for(versions, current):
     if len(versions) == 1:
         return ""
@@ -133,6 +142,7 @@ def versions_for(versions, current):
             f'{preview_for(version)}</a><div class="details">'
             f'<div class="meta"><span class="version">v{escape(version["version"])}</span></div>'
             f'<h3><a href="{uri}"{selected}>{title}</a></h3>'
+            f'{code_markup(version["code"])}'
             f'<div class="links"><a class="action" href="{file}" download>Descargar</a>'
             f'<button class="action" type="button" data-share="{uri}" data-share-title="{title}">Compartir</button>'
             f'</div></div></article>'
@@ -157,6 +167,7 @@ def resource_page(item, versions, output, template):
         file=item["file"].rsplit("/", 1)[-1],
         preview=preview_for(item),
         versions=versions_for(versions, item),
+        code=code_markup(item["code"]),
     )
     (output / item["page"] / "index.html").write_text(html, encoding="utf-8")
 
@@ -174,8 +185,9 @@ def representative_key(item):
     return bool(item["thumbnail"]), tuple(int(part) for part in item["version"].split(".")), item["page"]
 
 
-def groups_for(output):
-    groups = defaultdict(list)
+def approved_items():
+    codes = set()
+    group_codes = {}
     for number, line in enumerate((ROOT / "CATALOG.md").read_text(encoding="utf-8").splitlines(), 1):
         if not line.startswith("| `"):
             continue
@@ -201,9 +213,30 @@ def groups_for(output):
             "description": description.replace(r"\|", "|"),
             "format": format_name,
         }
-        prepare_resource(asset, item, output)
-        groups[group_for(item, asset, card)].append(item)
-    return groups
+        group = group_for(item, asset, card)
+        base = group[-1]
+        if group_codes.setdefault(base, group) != group:
+            raise ValueError(f"Código base compartido por distintos recursos: {base}")
+        item["baseCode"] = base
+        code = f'{base}-v{item["version"]}'
+        if code in codes:
+            raise ValueError(f"Código de versión duplicado: {code}")
+        codes.add(code)
+        item["code"] = code
+        yield group, item, asset
+
+
+def find_code(code):
+    code = code.strip().casefold()
+    matches = [
+        (item["code"], asset.relative_to(ROOT))
+        for _, item, asset in approved_items()
+        if code in (item["code"], item["baseCode"])
+    ]
+    if not matches:
+        raise SystemExit(f"No existe un recurso aprobado con el código: {code}")
+    for match, asset in matches:
+        print(f"{match}\t{asset}")
 
 
 def build(output):
@@ -219,7 +252,10 @@ def build(output):
         stamp = stamp.crop(stamp.getbbox())
         stamp.thumbnail((216, 98), Image.Resampling.LANCZOS)
         stamp.save(output / "logo.png")
-    groups = groups_for(output)
+    groups = defaultdict(list)
+    for group, item, asset in approved_items():
+        prepare_resource(asset, item, output)
+        groups[group].append(item)
     template = Template((ROOT / "site" / "resource.html").read_text(encoding="utf-8"))
     items = []
     for versions in groups.values():
@@ -228,7 +264,7 @@ def build(output):
         for item in versions:
             item["groupTitle"] = group_title
             resource_page(item, versions, output, template)
-        search_terms = " ".join(f'{item["title"]} {item["description"]} {item["version"]}' for item in versions)
+        search_terms = " ".join(f'{item["title"]} {item["description"]} {item["version"]} {item["code"]}' for item in versions)
         items.append(dict(versions[0], versionCount=len(versions), searchTerms=search_terms))
     items.sort(key=lambda item: item["groupTitle"].casefold())
     used = {item["category"] for item in items}
@@ -241,5 +277,12 @@ def build(output):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("output", type=Path)
-    build(parser.parse_args().output)
+    parser.add_argument("output", type=Path, nargs="?")
+    parser.add_argument("--find", metavar="CÓDIGO")
+    args = parser.parse_args()
+    if (args.output is None) == (args.find is None):
+        parser.error("indica un directorio de salida o --find CÓDIGO")
+    if args.find is not None:
+        find_code(args.find)
+    else:
+        build(args.output)

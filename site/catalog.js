@@ -89,6 +89,10 @@ function cardFor(item) {
   record.textContent = item.groupTitle;
   record.href = item.page;
   fragment.querySelector("p").textContent = item.description;
+  fragment.querySelector("code").textContent = item.code;
+  const copy = fragment.querySelector("[data-copy-code]");
+  copy.dataset.copyCode = item.code;
+  copy.setAttribute("aria-label", `Copiar código ${item.code}`);
   fragment.querySelector(".file").href = item.file;
   const share = fragment.querySelector("[data-share]");
   share.dataset.share = item.page;

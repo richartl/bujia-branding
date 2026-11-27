@@ -75,3 +75,23 @@ a.action { background: var(--green); color: var(--cream); }
 }
 .resource-versions { grid-column: 1 / -1; }
 .resource-versions [aria-current="page"] { text-decoration-thickness: 2px; }
+.reference-code {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .55rem;
+  margin-block: .4rem .75rem;
+  font-size: .79rem;
+}
+.reference-code code { overflow-wrap: anywhere; color: var(--green); }
+.reference-code .action { padding: .2rem .45rem; }
+#action-status:not([hidden]) {
+  position: fixed;
+  z-index: 2;
+  bottom: .75rem;
+  right: .75rem;
+  padding: .55rem .8rem;
+  border: 1px solid var(--rule);
+  border-radius: .35rem;
+  background: var(--cream);
+}

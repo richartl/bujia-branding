@@ -21,6 +21,7 @@
       <div class="meta"><span class="state" data-status="approved">Aprobado</span></div>
       <h1>$title</h1>
       <p>$description</p>
+      $code
       <dl>
         <dt>Categoría</dt><dd>$category</dd>
         <dt>Versión</dt><dd>$version</dd>
@@ -32,7 +33,7 @@
         <a class="action" href="$file" download>Descargar</a>
         <button class="action" type="button" data-share="./" data-share-title="$title">Compartir</button>
       </div>
-      <p id="share-status" class="notice" role="status" hidden></p>
+      <p id="action-status" class="notice" role="status" hidden></p>
     </div>
     $versions
   </main>

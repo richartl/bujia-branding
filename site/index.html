@@ -19,12 +19,12 @@
   <main class="wrap">
     <form class="controls" role="search">
       <label>Buscar recurso
-        <input type="search" id="search" placeholder="Ej. docerola, fachada o DTF">
+        <input type="search" id="search" placeholder="Ej. docerola o código de imagen">
       </label>
     </form>
     <nav id="categories" aria-label="Categorías"></nav>
     <p id="results" role="status"></p>
-    <p id="share-status" class="notice" role="status" hidden></p>
+    <p id="action-status" class="notice" role="status" hidden></p>
     <div id="catalog"></div>
     <noscript>Activa JavaScript para explorar los recursos del catálogo.</noscript>
   </main>
@@ -35,6 +35,7 @@
         <div class="meta"><span class="state"></span><span class="version"></span></div>
         <h3><a class="record"></a></h3>
         <p></p>
+        <div class="reference-code"><code></code><button class="action" type="button" data-copy-code>Copiar código</button></div>
         <div class="links"><a class="file action" download>Descargar</a><button class="action" type="button" data-share>Compartir</button></div>
       </div>
     </article>

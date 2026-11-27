@@ -9,3 +9,5 @@ Para recuperar una versión, empieza en el [catálogo](../CATALOG.md) y abre su 
 ## Versiones en el catálogo público
 
 Usa el mismo identificador y categoría para variantes de una misma ilustración, por ejemplo al cambiar solo su color. Asigna un identificador propio a una composición independiente, aunque pertenezca a la misma serie. El sitio muestra una tarjeta por recurso y reúne en ella todas sus versiones aprobadas. Conserva la versión de origen en la ficha para identificar correctamente las variantes de las series antiguas.
+
+Cada imagen aprobada tiene un código público con formato `<código-base>-vMAJOR.MINOR.PATCH`. Por ejemplo, `dtf-shirt-back-v1.2.0` identifica exactamente la espalda de playera con el rótulo crema. Usa **Copiar código** en su ficha para indicar qué archivo debe servir de base. Un código sin versión identifica la familia. Si el encargo requiere un original exacto, usa el código completo. Desde la raíz del repositorio, `python site/build.py --find dtf-shirt-back-v1.2.0` devuelve la ruta del archivo aprobado.
