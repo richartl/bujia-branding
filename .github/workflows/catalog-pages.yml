@@ -27,8 +27,6 @@ jobs:
     permissions:
       contents: read
       pages: read
-    outputs:
-      publish: ${{ steps.visibility.outputs.publish }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,37 +34,14 @@ jobs:
           python-version: "3.12"
       - run: python -m pip install Pillow==12.2.0
       - run: python site/build.py _site
-      - name: Verificar visibilidad de Pages
-        id: visibility
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ALLOW_PUBLIC: ${{ vars.CATALOG_ALLOW_PUBLIC }}
-        run: |
-          settings=$(gh api "repos/$GITHUB_REPOSITORY/pages" 2>/dev/null) || settings=''
-          if [[ -z "$settings" ]]; then
-            reason='GitHub Actions no pudo leer la configuración de Pages.'
-          elif [[ "$(jq -r '.build_type' <<< "$settings")" != workflow ]]; then
-            reason='Pages debe usar GitHub Actions como origen.'
-          elif jq -e '.public == false' <<< "$settings" >/dev/null ||
-               { [[ "$ALLOW_PUBLIC" == true ]] && jq -e '.public == true' <<< "$settings" >/dev/null; }; then
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          else
-            reason='Pages no confirma acceso privado y el repositorio no tiene autorización explícita para publicar el catálogo en público.'
-          fi
-          echo "publish=false" >> "$GITHUB_OUTPUT"
-          echo "::notice::$reason"
-          printf '%s\n' "Catálogo construido. Despliegue omitido. $reason" >> "$GITHUB_STEP_SUMMARY"
-      - uses: actions/configure-pages@v5
-        if: steps.visibility.outputs.publish == 'true'
+      - name: Leer configuración de GitHub Pages
+        uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
-        if: steps.visibility.outputs.publish == 'true'
         with:
           path: _site
 
   deploy:
-    if: needs.build.outputs.publish == 'true'
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

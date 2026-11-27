@@ -30,4 +30,4 @@ El [catálogo de recursos](CATALOG.md) alimenta un sitio de GitHub Pages con min
 
 Para probarlo localmente, instala Pillow 12.2.0 y ejecuta `python site/build.py /tmp/bujia-catalog` desde la raíz. Abre el `index.html` generado. Los cambios en el catálogo y sus recursos regeneran el sitio mediante GitHub Actions.
 
-En **Settings → Pages**, selecciona **GitHub Actions** como origen. El flujo publica si Pages informa visibilidad privada. Si GitHub solo ofrece un sitio público, confirma primero que las miniaturas y los metadatos se puedan compartir. Con esa autorización, la variable de Actions `CATALOG_ALLOW_PUBLIC=true` habilita el despliegue público. Puedes relanzar el flujo **Catálogo en GitHub Pages** después de configurar el acceso.
+En **Settings → Pages**, selecciona **GitHub Actions** como origen. El flujo **Catálogo en GitHub Pages** despliega desde `main` con la visibilidad configurada en Pages. En el sitio se publican miniaturas y datos de los recursos del catálogo. Los archivos originales y sus fichas siguen enlazados al repositorio.
