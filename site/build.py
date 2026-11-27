@@ -34,6 +34,11 @@ LINK = re.compile(r"\[(.+)\]\(([^)]+)\)")
 IMAGE_TYPES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 # These older identifiers name a series that contains distinct compositions.
 SERIES_IDS = {"facade", "facade-sheet", "giraffe-at-workbench", "support-local-guitar-shop"}
+# Early cream DTF links were shared with dots in the version number.
+SHARED_LINK_STEMS = {
+    "dtf-shirt-chest-v1.2.0-cream-wordmark",
+    "dtf-shirt-back-v1.2.0-cream-wordmark",
+}
 
 
 def repository_path(value):
@@ -89,6 +94,17 @@ def prepare_resource(asset, item, output):
     item["page"] = folder + "/"
     item["thumbnail"], item["dimensions"] = image_metadata(asset, output)
     item["size"] = file_size(asset)
+    if asset.stem in SHARED_LINK_STEMS:
+        alias = output / "resources" / f"{asset.stem}-{suffix}"
+        alias.mkdir()
+        target = "../" + Path(folder).name + "/"
+        (alias / "index.html").write_text(
+            '<!doctype html><html lang="es"><meta charset="utf-8">'
+            f'<meta http-equiv="refresh" content="0; url={target}">'
+            f'<link rel="canonical" href="{target}"><title>Ficha de Bujía</title>'
+            f'<a href="{target}">Abrir ficha</a></html>',
+            encoding="utf-8",
+        )
 
 
 def preview_for(item):
