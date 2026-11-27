@@ -29,7 +29,7 @@ function matchesCategory(key) {
 function render() {
   const terms = normalize(search.value).trim().split(/\s+/);
   const matches = data.items.filter(item => {
-    const words = normalize([item.title, item.description, item.id, item.categoryLabel, item.version].join(" "));
+    const words = normalize([item.searchTerms, item.id, item.categoryLabel].join(" "));
     return matchesCategory(item.category) && terms.every(term => words.includes(term));
   });
 
@@ -75,7 +75,8 @@ function cardFor(item) {
   }
   state.dataset.status = "approved";
   state.textContent = "Aprobado";
-  fragment.querySelector(".version").textContent = `v${item.version}`;
+  fragment.querySelector(".version").textContent = item.versionCount === 1
+    ? "1 versión" : `${item.versionCount} versiones`;
   const record = fragment.querySelector(".record");
   record.textContent = item.title;
   record.href = item.page;

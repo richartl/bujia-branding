@@ -73,3 +73,5 @@ a.action { background: var(--green); color: var(--cream); }
 @media (max-width: 680px) {
   .resource { grid-template-columns: 1fr; gap: 1.15rem; }
 }
+.resource-versions { grid-column: 1 / -1; }
+.resource-versions [aria-current="page"] { text-decoration-thickness: 2px; }

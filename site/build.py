@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import shutil
+from collections import defaultdict
 from html import escape
 from string import Template
 from pathlib import Path
@@ -31,6 +32,8 @@ CATEGORIES = {
 }
 LINK = re.compile(r"\[(.+)\]\(([^)]+)\)")
 IMAGE_TYPES = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
+# These older identifiers name a series that contains distinct compositions.
+SERIES_IDS = {"facade", "facade-sheet", "giraffe-at-workbench", "support-local-guitar-shop"}
 
 
 def repository_path(value):
@@ -74,7 +77,7 @@ def file_size(path):
     return f"{size / 1024:.1f} KiB"
 
 
-def resource_page(asset, item, output, template):
+def prepare_resource(asset, item, output):
     asset_key = str(asset.relative_to(ROOT))
     suffix = hashlib.sha256(asset_key.encode()).hexdigest()[:10]
     slug = re.sub(r"[^a-z0-9-]+", "-", asset.stem.lower()).strip("-")
@@ -84,28 +87,73 @@ def resource_page(asset, item, output, template):
     shutil.copyfile(asset, directory / asset.name)
     item["file"] = folder + "/" + quote(asset.name)
     item["page"] = folder + "/"
-    item["thumbnail"], dimensions = image_metadata(asset, output)
-    preview = (
-        f'<img src="../../{escape(item["thumbnail"])}" alt="{escape(item["title"])}">'
-        if item["thumbnail"] else f'<span>{escape(item["format"])}</span>'
+    item["thumbnail"], item["dimensions"] = image_metadata(asset, output)
+    item["size"] = file_size(asset)
+
+
+def preview_for(item):
+    if not item["thumbnail"]:
+        return f'<span>{escape(item["format"])}</span>'
+    return f'<img src="../../{escape(item["thumbnail"])}" alt="{escape(item["title"])}">'
+
+
+def versions_for(versions, current):
+    if len(versions) == 1:
+        return ""
+    cards = []
+    for version in versions:
+        uri = "../../" + escape(version["page"])
+        file = "../../" + escape(version["file"])
+        title = escape(version["title"])
+        selected = ' aria-current="page"' if version is current else ""
+        cards.append(
+            f'<article class="card"><a class="preview" href="{uri}"{selected} aria-label="Ver {title}">'
+            f'{preview_for(version)}</a><div class="details">'
+            f'<div class="meta"><span class="version">v{escape(version["version"])}</span></div>'
+            f'<h3><a href="{uri}"{selected}>{title}</a></h3>'
+            f'<div class="links"><a class="action" href="{file}" download>Descargar</a>'
+            f'<button class="action" type="button" data-share="{uri}" data-share-title="{title}">Compartir</button>'
+            f'</div></div></article>'
+        )
+    return (
+        '<section class="resource-versions" aria-labelledby="versions-heading">'
+        f'<h2 id="versions-heading">Versiones ({len(versions)})</h2>'
+        f'<div class="grid">{"".join(cards)}</div></section>'
     )
+
+
+def resource_page(item, versions, output, template):
+    dimensions = item["dimensions"]
     html = template.substitute(
         title=escape(item["title"]),
         description=escape(item["description"]),
         category=escape(item["categoryLabel"]),
         version=escape(item["version"]),
         format=escape(item["format"]),
-        size=file_size(asset),
+        size=item["size"],
         dimensions=f"<dt>Resolución</dt><dd>{escape(dimensions)}</dd>" if dimensions else "",
-        file=quote(asset.name),
-        preview=preview,
+        file=item["file"].rsplit("/", 1)[-1],
+        preview=preview_for(item),
+        versions=versions_for(versions, item),
     )
-    (directory / "index.html").write_text(html, encoding="utf-8")
+    (output / item["page"] / "index.html").write_text(html, encoding="utf-8")
 
 
-def items_for(output):
-    items = []
-    template = Template((ROOT / "site" / "resource.html").read_text(encoding="utf-8"))
+def group_for(item, asset, card):
+    identifier = item["id"]
+    if identifier not in SERIES_IDS:
+        return item["category"], identifier
+    origin = re.search(r"^- Origen: \[[^\]]+\]\(([^)]+)\)", card.read_text(encoding="utf-8"), re.M)
+    stem = Path(origin[1]).stem if origin else asset.stem
+    return item["category"], identifier, re.sub(r"-v[0-9]+\.[0-9]+\.[0-9]+", "", stem)
+
+
+def representative_key(item):
+    return bool(item["thumbnail"]), tuple(int(part) for part in item["version"].split(".")), item["page"]
+
+
+def groups_for(output):
+    groups = defaultdict(list)
     for number, line in enumerate((ROOT / "CATALOG.md").read_text(encoding="utf-8").splitlines(), 1):
         if not line.startswith("| `"):
             continue
@@ -122,7 +170,7 @@ def items_for(output):
         title, card_path = title_link.groups()
         format_name, asset_path = file_link.groups()
         asset = repository_path(asset_path)
-        repository_path(card_path)
+        card = repository_path(card_path)
         key = category_for(category.strip("`"))
         item = {
             "id": identifier.strip("`"), "title": title,
@@ -131,9 +179,9 @@ def items_for(output):
             "description": description.replace(r"\|", "|"),
             "format": format_name,
         }
-        resource_page(asset, item, output, template)
-        items.append(item)
-    return items
+        prepare_resource(asset, item, output)
+        groups[group_for(item, asset, card)].append(item)
+    return groups
 
 
 def build(output):
@@ -149,14 +197,22 @@ def build(output):
         stamp = stamp.crop(stamp.getbbox())
         stamp.thumbnail((216, 98), Image.Resampling.LANCZOS)
         stamp.save(output / "logo.png")
-    items = items_for(output)
-    items.sort(key=lambda item: (item["title"].casefold(), item["version"]))
+    groups = groups_for(output)
+    template = Template((ROOT / "site" / "resource.html").read_text(encoding="utf-8"))
+    items = []
+    for versions in groups.values():
+        versions.sort(key=representative_key, reverse=True)
+        for item in versions:
+            resource_page(item, versions, output, template)
+        search_terms = " ".join(f'{item["title"]} {item["description"]} {item["version"]}' for item in versions)
+        items.append(dict(versions[0], versionCount=len(versions), searchTerms=search_terms))
+    items.sort(key=lambda item: item["title"].casefold())
     used = {item["category"] for item in items}
     data = {"categories": [(key, label) for key, label in CATEGORIES.items() if key in used], "items": items}
     (output / "catalog-data.js").write_text(
         "window.catalog = " + json.dumps(data, ensure_ascii=False) + ";\n", encoding="utf-8"
     )
-    print(f"{len(items)} recursos en el catálogo")
+    print(f"{len(items)} recursos y {sum(item['versionCount'] for item in items)} versiones en el catálogo")
 
 
 if __name__ == "__main__":
